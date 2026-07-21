@@ -89,5 +89,4 @@ class Ball:
     def draw(self, screen: pygame.surface) -> None:
         """ Renders the Ball. """
         colour = cfg.BALL_COLOR
-        print(self.rect.x, self.rect.y, self.vx, self.vy)
         pygame.draw.circle(screen, colour, self.rect.center, self.radius)

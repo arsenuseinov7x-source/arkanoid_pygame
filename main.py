@@ -59,6 +59,13 @@ def _handle_ball_vs_bricks(
             scored += 10
     return scored
 
+def _handle_ball_vs_paddle(ball: Ball, paddle: Paddle) -> None:
+    """ Handles Ball bounce over the Paddle. """
+    _bounce_off_rect(ball, paddle.rect)
+    offset = (ball.rect.centerx - paddle.rect.centerx) / (paddle.rect.width / 2)
+    max_vx = cfg.MAX_BALL_SPEED_X
+    ball.vx = max(-max_vx, min(max_vx, offset * max_vx))
+
 def main():
     pygame.init()
     screen = pygame.display.set_mode((cfg.WIDTH, cfg.HEIGHT))
@@ -81,6 +88,9 @@ def main():
         paddle.move(keys)
 
         _handle_ball_vs_bricks(ball, bricks)
+
+        if ball.rect.colliderect(paddle.rect) and ball.vy > 0:
+            _handle_ball_vs_paddle(ball, paddle)
 
         for brick in bricks:
             brick.draw(screen)
