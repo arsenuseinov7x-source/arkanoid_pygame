@@ -57,6 +57,15 @@ class Brick:
         """ Renders a Brick in a certain row and col. """
         pygame.draw.rect(screen, self.color, self.rect)
         pygame.draw.rect(screen, cfg.DARK_GRAY, self.rect, 2)
+    
+    def hit(self) -> None:
+        """ Handles the Brick Hit. """
+        if self.hp > 0:
+            self.hp -= 1
+            if self.hp > 0:
+                self.color = cfg.BRICK_COLORS[self.hp]
+                return
+        return
 
 class Ball:
     """ Ball Actor class. """
@@ -80,4 +89,5 @@ class Ball:
     def draw(self, screen: pygame.surface) -> None:
         """ Renders the Ball. """
         colour = cfg.BALL_COLOR
+        print(self.rect.x, self.rect.y, self.vx, self.vy)
         pygame.draw.circle(screen, colour, self.rect.center, self.radius)
