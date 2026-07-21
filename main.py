@@ -1,5 +1,6 @@
 import pygame
 import settings as cfg
+from screens.game_screen import run as game_screen
 
 def main():
     pygame.init()
@@ -10,11 +11,12 @@ def main():
     running = True
     while running:
         # Main Loop
+        game_screen(screen, clock, 1)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:   # Press "close" button
                 running = False
 
-        screen.fill(cfg.BLACK)
+        # screen.fill(cfg.BLACK)
 
         pygame.display.flip()   # Screen Update
         clock.tick(cfg.FPS)         # FPS (Frames Per Second)
