@@ -37,7 +37,19 @@ MAX_BALL_SPEED_X = 8
 
 # --- Bonuses ---------------------------------------------------------------------
 BONUS_PROBABILITY = 0.3  # Chance that destroyed brick will drop a bonus
-BONUS_TYPES = ["extend", "multiball", "laser", "extra_life"]
+BONUS_TYPES = ["shrink", "extend", "grow", "speed_up", "speed_down"]
+
+BONUS_SIZE = 20  # Falling bonus square size
+BONUS_FALL_SPEED = 3  # How fast the bonus falls down
+BONUS_DURATION = 6000  # ms, how long a bonus effect lasts once caught
+BONUS_SPEED_UP_FACTOR = 1.6
+BONUS_SPEED_DOWN_FACTOR = 0.6
+BONUS_PADDLE_SHRINK_FACTOR = 0.5  # Paddle width multiplier while shrunk
+BONUS_PADDLE_EXTEND_FACTOR = 1.6  # Paddle width multiplier while extended
+BONUS_BALL_GROW_FACTOR = 1.7  # Ball radius multiplier while grown
+
+# --- Lives / Game state --------------------------------------------------------
+STARTING_LIVES = 3
 
 # --- Visual Effects -----------------------------------------------------------
 TRAIL_LENGTH = 6  # Ball's Motion Trail Length
@@ -67,4 +79,13 @@ BRICK_COLORS = {
     1: RED,
     0: GRAY, # Indestructable brick
     -1: DARK_GRAY,  # Indestructable Level Boundaries
+}
+
+# Bonus Colors
+BONUS_COLORS = {
+    "shrink": RED,
+    "extend": GREEN,
+    "grow": MAGENTA,
+    "speed_up": ORANGE,
+    "speed_down": CYAN,
 }
